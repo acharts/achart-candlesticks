@@ -1,0 +1,1108 @@
+{
+  "instrumentation": "node-jscoverage",
+  "sloc": 73,
+  "hits": 71,
+  "misses": 2,
+  "coverage": 97.26027397260275,
+  "files": [
+    {
+      "filename": "/Users/zhenyi/Documents/git/achart-candlesticks/src/candlestick.js",
+      "coverage": 100,
+      "hits": 26,
+      "misses": 0,
+      "sloc": 26,
+      "source": {
+        "1": {
+          "source": "/**",
+          "coverage": ""
+        },
+        "2": {
+          "source": " * @fileOverview 股票k线图 单个节点",
+          "coverage": ""
+        },
+        "3": {
+          "source": " * @ignoreig",
+          "coverage": ""
+        },
+        "4": {
+          "source": " */",
+          "coverage": ""
+        },
+        "5": {
+          "source": "",
+          "coverage": ""
+        },
+        "6": {
+          "source": "var Util = require('achart-util'),",
+          "coverage": 1
+        },
+        "7": {
+          "source": "    Item = require('achart-plot').Item;",
+          "coverage": ""
+        },
+        "8": {
+          "source": "",
+          "coverage": ""
+        },
+        "9": {
+          "source": "/**",
+          "coverage": ""
+        },
+        "10": {
+          "source": " * @class Chart.Group.Flag",
+          "coverage": ""
+        },
+        "11": {
+          "source": " * 图形标记，包含文本和连接线",
+          "coverage": ""
+        },
+        "12": {
+          "source": " */",
+          "coverage": ""
+        },
+        "13": {
+          "source": "var Candlestick = function (cfg) {",
+          "coverage": 1
+        },
+        "14": {
+          "source": "    Candlestick.superclass.constructor.call(this,cfg);",
+          "coverage": 7
+        },
+        "15": {
+          "source": "};",
+          "coverage": ""
+        },
+        "16": {
+          "source": "",
+          "coverage": ""
+        },
+        "17": {
+          "source": "",
+          "coverage": ""
+        },
+        "18": {
+          "source": "Candlestick.ATTRS = {",
+          "coverage": 1
+        },
+        "19": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "20": {
+          "source": "     * 连接线的配置信息",
+          "coverage": ""
+        },
+        "21": {
+          "source": "     * @type {Object}",
+          "coverage": ""
+        },
+        "22": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "23": {
+          "source": "    line : null,",
+          "coverage": ""
+        },
+        "24": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "25": {
+          "source": "     * 上升的图形的配置信息",
+          "coverage": ""
+        },
+        "26": {
+          "source": "     * @type {Object}",
+          "coverage": ""
+        },
+        "27": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "28": {
+          "source": "    riseShape: null,",
+          "coverage": ""
+        },
+        "29": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "30": {
+          "source": "     * 下降的图形的配置信息",
+          "coverage": ""
+        },
+        "31": {
+          "source": "     * @type {Object}",
+          "coverage": ""
+        },
+        "32": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "33": {
+          "source": "    fallShape: null,",
+          "coverage": ""
+        },
+        "34": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "35": {
+          "source": "     * 点信息",
+          "coverage": ""
+        },
+        "36": {
+          "source": "     * @type {Array}",
+          "coverage": ""
+        },
+        "37": {
+          "source": "     * [open,high,low,close]",
+          "coverage": ""
+        },
+        "38": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "39": {
+          "source": "    points : null",
+          "coverage": ""
+        },
+        "40": {
+          "source": "};",
+          "coverage": ""
+        },
+        "41": {
+          "source": "",
+          "coverage": ""
+        },
+        "42": {
+          "source": "Util.extend(Candlestick,Item);",
+          "coverage": 1
+        },
+        "43": {
+          "source": "",
+          "coverage": ""
+        },
+        "44": {
+          "source": "Util.augment(Candlestick,{",
+          "coverage": 1
+        },
+        "45": {
+          "source": "    //渲染控件",
+          "coverage": ""
+        },
+        "46": {
+          "source": "    renderUI : function(){",
+          "coverage": ""
+        },
+        "47": {
+          "source": "        var _self = this;",
+          "coverage": 7
+        },
+        "48": {
+          "source": "        Candlestick.superclass.renderUI.call(_self);",
+          "coverage": 7
+        },
+        "49": {
+          "source": "        _self._drawCandlestick();",
+          "coverage": 7
+        },
+        "50": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "51": {
+          "source": "    _drawCandlestick: function(){",
+          "coverage": ""
+        },
+        "52": {
+          "source": "        var _self = this;",
+          "coverage": 7
+        },
+        "53": {
+          "source": "",
+          "coverage": ""
+        },
+        "54": {
+          "source": "        //判断涨还是跌",
+          "coverage": ""
+        },
+        "55": {
+          "source": "        _self._setType();",
+          "coverage": 7
+        },
+        "56": {
+          "source": "        //画线",
+          "coverage": ""
+        },
+        "57": {
+          "source": "        _self._drawLine();",
+          "coverage": 7
+        },
+        "58": {
+          "source": "        //画图形",
+          "coverage": ""
+        },
+        "59": {
+          "source": "        _self._drawShape();",
+          "coverage": 7
+        },
+        "60": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "61": {
+          "source": "    //判断涨还是跌",
+          "coverage": ""
+        },
+        "62": {
+          "source": "    _setType: function(){",
+          "coverage": ""
+        },
+        "63": {
+          "source": "        var _self = this,",
+          "coverage": 7
+        },
+        "64": {
+          "source": "            points = _self.get('points'),",
+          "coverage": ""
+        },
+        "65": {
+          "source": "            openPoint = points[0],",
+          "coverage": ""
+        },
+        "66": {
+          "source": "            closePoint = points[3];",
+          "coverage": ""
+        },
+        "67": {
+          "source": "",
+          "coverage": ""
+        },
+        "68": {
+          "source": "        var isRise = openPoint.value > closePoint.value ? false : true;",
+          "coverage": 7
+        },
+        "69": {
+          "source": "",
+          "coverage": ""
+        },
+        "70": {
+          "source": "        _self.set('isRise',isRise);",
+          "coverage": 7
+        },
+        "71": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "72": {
+          "source": "    //画线",
+          "coverage": ""
+        },
+        "73": {
+          "source": "    _drawLine: function(){",
+          "coverage": ""
+        },
+        "74": {
+          "source": "        var _self = this,",
+          "coverage": 7
+        },
+        "75": {
+          "source": "            lineAttr = _self.get('line'),",
+          "coverage": ""
+        },
+        "76": {
+          "source": "            points = _self.get('points'),",
+          "coverage": ""
+        },
+        "77": {
+          "source": "            isRise = _self.get('isRise'),",
+          "coverage": ""
+        },
+        "78": {
+          "source": "            highPoint = points[1],",
+          "coverage": ""
+        },
+        "79": {
+          "source": "            lowPoint = points[2];",
+          "coverage": ""
+        },
+        "80": {
+          "source": "",
+          "coverage": ""
+        },
+        "81": {
+          "source": "        var cfg = Util.mix(lineAttr,{",
+          "coverage": 7
+        },
+        "82": {
+          "source": "            x1: highPoint.x,",
+          "coverage": ""
+        },
+        "83": {
+          "source": "            y1: highPoint.y,",
+          "coverage": ""
+        },
+        "84": {
+          "source": "            x2: lowPoint.x,",
+          "coverage": ""
+        },
+        "85": {
+          "source": "            y2: lowPoint.y",
+          "coverage": ""
+        },
+        "86": {
+          "source": "        });",
+          "coverage": ""
+        },
+        "87": {
+          "source": "",
+          "coverage": ""
+        },
+        "88": {
+          "source": "        var line = _self.addShape('line',cfg);",
+          "coverage": 7
+        },
+        "89": {
+          "source": "",
+          "coverage": ""
+        },
+        "90": {
+          "source": "        _self.set('lineShape',line);",
+          "coverage": 7
+        },
+        "91": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "92": {
+          "source": "    //画图形",
+          "coverage": ""
+        },
+        "93": {
+          "source": "    _drawShape: function(){",
+          "coverage": ""
+        },
+        "94": {
+          "source": "        var _self = this,",
+          "coverage": 7
+        },
+        "95": {
+          "source": "            points = _self.get('points'),",
+          "coverage": ""
+        },
+        "96": {
+          "source": "            isRise = _self.get('isRise'),",
+          "coverage": ""
+        },
+        "97": {
+          "source": "            shapeCfg = isRise ? _self.get('riseShape') : _self.get('fallShape'),",
+          "coverage": ""
+        },
+        "98": {
+          "source": "            openPoint = points[0],",
+          "coverage": ""
+        },
+        "99": {
+          "source": "            closePoint = points[3];",
+          "coverage": ""
+        },
+        "100": {
+          "source": "",
+          "coverage": ""
+        },
+        "101": {
+          "source": "        var width = shapeCfg.width || 20;",
+          "coverage": 7
+        },
+        "102": {
+          "source": "",
+          "coverage": ""
+        },
+        "103": {
+          "source": "        var cfg = Util.mix(shapeCfg,{",
+          "coverage": 7
+        },
+        "104": {
+          "source": "            x: openPoint.x - width/2,",
+          "coverage": ""
+        },
+        "105": {
+          "source": "            y: Math.min(openPoint.y, closePoint.y),",
+          "coverage": ""
+        },
+        "106": {
+          "source": "            width: width,",
+          "coverage": ""
+        },
+        "107": {
+          "source": "            height: Math.abs(openPoint.y - closePoint.y)",
+          "coverage": ""
+        },
+        "108": {
+          "source": "        });",
+          "coverage": ""
+        },
+        "109": {
+          "source": "",
+          "coverage": ""
+        },
+        "110": {
+          "source": "        var rect = _self.addShape('rect',cfg);",
+          "coverage": 7
+        },
+        "111": {
+          "source": "",
+          "coverage": ""
+        },
+        "112": {
+          "source": "        _self.set('rectShape', rect);",
+          "coverage": 7
+        },
+        "113": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "114": {
+          "source": "});",
+          "coverage": ""
+        },
+        "115": {
+          "source": "",
+          "coverage": ""
+        },
+        "116": {
+          "source": "module.exports = Candlestick;",
+          "coverage": 1
+        }
+      }
+    },
+    {
+      "filename": "/Users/zhenyi/Documents/git/achart-candlesticks/src/candlesticks.js",
+      "coverage": 95.74468085106383,
+      "hits": 45,
+      "misses": 2,
+      "sloc": 47,
+      "source": {
+        "1": {
+          "source": "var Util = require('achart-util'),",
+          "coverage": 1
+        },
+        "2": {
+          "source": "    Candlestick = require('./candlestick'),",
+          "coverage": ""
+        },
+        "3": {
+          "source": "    Group = require('achart-actived').Group,",
+          "coverage": ""
+        },
+        "4": {
+          "source": "    PlotItem = require('achart-plot').Item;",
+          "coverage": ""
+        },
+        "5": {
+          "source": "",
+          "coverage": ""
+        },
+        "6": {
+          "source": "/**",
+          "coverage": ""
+        },
+        "7": {
+          "source": " * @class Chart.Group.Candlesticks",
+          "coverage": ""
+        },
+        "8": {
+          "source": " * 股票k线图",
+          "coverage": ""
+        },
+        "9": {
+          "source": " * @extends Chart.PlotItem",
+          "coverage": ""
+        },
+        "10": {
+          "source": " */",
+          "coverage": ""
+        },
+        "11": {
+          "source": "var Candlesticks = function(cfg){",
+          "coverage": 1
+        },
+        "12": {
+          "source": "    Candlesticks.superclass.constructor.call(this,cfg);",
+          "coverage": 1
+        },
+        "13": {
+          "source": "};",
+          "coverage": ""
+        },
+        "14": {
+          "source": "",
+          "coverage": ""
+        },
+        "15": {
+          "source": "Util.extend(Candlesticks,PlotItem);",
+          "coverage": 1
+        },
+        "16": {
+          "source": "Util.mixin(Candlesticks,[Group]);",
+          "coverage": 1
+        },
+        "17": {
+          "source": "",
+          "coverage": ""
+        },
+        "18": {
+          "source": "Candlesticks.ATTRS = {",
+          "coverage": 1
+        },
+        "19": {
+          "source": "    elCls : 'x-chart-candlesticks',",
+          "coverage": ""
+        },
+        "20": {
+          "source": "    zIndex : 6,",
+          "coverage": ""
+        },
+        "21": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "22": {
+          "source": "     * 标记的配置项",
+          "coverage": ""
+        },
+        "23": {
+          "source": "     * @type {Object}",
+          "coverage": ""
+        },
+        "24": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "25": {
+          "source": "    candlestick : {},",
+          "coverage": ""
+        },
+        "26": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "27": {
+          "source": "     *  初始的candlestick集合配置信息",
+          "coverage": ""
+        },
+        "28": {
+          "source": "     *  @type {Array}",
+          "coverage": ""
+        },
+        "29": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "30": {
+          "source": "    items : null,",
+          "coverage": ""
+        },
+        "31": {
+          "source": "",
+          "coverage": ""
+        },
+        "32": {
+          "source": "    //@private",
+          "coverage": ""
+        },
+        "33": {
+          "source": "    candlestickGroup: []",
+          "coverage": ""
+        },
+        "34": {
+          "source": "};",
+          "coverage": ""
+        },
+        "35": {
+          "source": "",
+          "coverage": ""
+        },
+        "36": {
+          "source": "Util.augment(Candlesticks,{",
+          "coverage": 1
+        },
+        "37": {
+          "source": "    //渲染控件",
+          "coverage": ""
+        },
+        "38": {
+          "source": "    renderUI : function(){",
+          "coverage": ""
+        },
+        "39": {
+          "source": "        var _self = this;",
+          "coverage": 1
+        },
+        "40": {
+          "source": "        Candlesticks.superclass.renderUI.call(_self);",
+          "coverage": 1
+        },
+        "41": {
+          "source": "        _self._drawCandlesticks();",
+          "coverage": 1
+        },
+        "42": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "43": {
+          "source": "    //绑定事件",
+          "coverage": ""
+        },
+        "44": {
+          "source": "    bindUI :function(){",
+          "coverage": ""
+        },
+        "45": {
+          "source": "        var _self =this;",
+          "coverage": 1
+        },
+        "46": {
+          "source": "        _self.on('click',function(ev){",
+          "coverage": 1
+        },
+        "47": {
+          "source": "            var candlestick = _self.findBy(function(item){",
+          "coverage": 1
+        },
+        "48": {
+          "source": "                return item.containsElement && item.containsElement(ev.target)",
+          "coverage": 1
+        },
+        "49": {
+          "source": "            });",
+          "coverage": ""
+        },
+        "50": {
+          "source": "            _self.fire('stockclick',{candlestick : candlestick});",
+          "coverage": 1
+        },
+        "51": {
+          "source": "        });",
+          "coverage": ""
+        },
+        "52": {
+          "source": "",
+          "coverage": ""
+        },
+        "53": {
+          "source": "        _self.on('mouseover',function(ev){",
+          "coverage": 1
+        },
+        "54": {
+          "source": "            var candlestick = _self.findBy(function(item){",
+          "coverage": 1
+        },
+        "55": {
+          "source": "                return item.containsElement && item.containsElement(ev.target)",
+          "coverage": 1
+        },
+        "56": {
+          "source": "            });",
+          "coverage": ""
+        },
+        "57": {
+          "source": "            _self.fire('stockover',{candlestick : candlestick});",
+          "coverage": 1
+        },
+        "58": {
+          "source": "        });",
+          "coverage": ""
+        },
+        "59": {
+          "source": "",
+          "coverage": ""
+        },
+        "60": {
+          "source": "        _self.on('mouseout',function(ev){",
+          "coverage": 1
+        },
+        "61": {
+          "source": "            var candlestick = _self.findBy(function(item){",
+          "coverage": 1
+        },
+        "62": {
+          "source": "                return item.containsElement && item.containsElement(ev.target)",
+          "coverage": 1
+        },
+        "63": {
+          "source": "            });",
+          "coverage": ""
+        },
+        "64": {
+          "source": "            _self.fire('stockout',{candlestick : candlestick});",
+          "coverage": 1
+        },
+        "65": {
+          "source": "        })",
+          "coverage": ""
+        },
+        "66": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "67": {
+          "source": "    _drawCandlesticks: function(){",
+          "coverage": ""
+        },
+        "68": {
+          "source": "        var _self = this,",
+          "coverage": 2
+        },
+        "69": {
+          "source": "            candlestickGroup = _self.get('candlestickGroup'),",
+          "coverage": ""
+        },
+        "70": {
+          "source": "            items = _self.get('items');",
+          "coverage": ""
+        },
+        "71": {
+          "source": "",
+          "coverage": ""
+        },
+        "72": {
+          "source": "        Util.each(items,function(item,index){",
+          "coverage": 2
+        },
+        "73": {
+          "source": "            _self._drawSingle(item);",
+          "coverage": 4
+        },
+        "74": {
+          "source": "        });",
+          "coverage": ""
+        },
+        "75": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "76": {
+          "source": "    _drawSingle: function(item){",
+          "coverage": ""
+        },
+        "77": {
+          "source": "        var _self = this,",
+          "coverage": 5
+        },
+        "78": {
+          "source": "            candlestickGroup = _self.get('candlestickGroup'),",
+          "coverage": ""
+        },
+        "79": {
+          "source": "            candlestick = _self.get('candlestick');",
+          "coverage": ""
+        },
+        "80": {
+          "source": "",
+          "coverage": ""
+        },
+        "81": {
+          "source": "        var cfg = Util.mix({},candlestick,item);",
+          "coverage": 5
+        },
+        "82": {
+          "source": "        var group = _self.addGroup(Candlestick,cfg);",
+          "coverage": 5
+        },
+        "83": {
+          "source": "",
+          "coverage": ""
+        },
+        "84": {
+          "source": "        candlestickGroup.push(group);",
+          "coverage": 5
+        },
+        "85": {
+          "source": "        return group;",
+          "coverage": 5
+        },
+        "86": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "87": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "88": {
+          "source": "     * 添加单个candlestick",
+          "coverage": ""
+        },
+        "89": {
+          "source": "     * @param {Object} item candlestick的配置信息",
+          "coverage": ""
+        },
+        "90": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "91": {
+          "source": "    addCandlestick: function(item){",
+          "coverage": ""
+        },
+        "92": {
+          "source": "        var _self = this,",
+          "coverage": 1
+        },
+        "93": {
+          "source": "            items = _self.get('items');",
+          "coverage": ""
+        },
+        "94": {
+          "source": "",
+          "coverage": ""
+        },
+        "95": {
+          "source": "        if(!items) {",
+          "coverage": 1
+        },
+        "96": {
+          "source": "            items = [];",
+          "coverage": 0
+        },
+        "97": {
+          "source": "            _self.set('items',items);",
+          "coverage": 0
+        },
+        "98": {
+          "source": "        }",
+          "coverage": ""
+        },
+        "99": {
+          "source": "",
+          "coverage": ""
+        },
+        "100": {
+          "source": "        items.push(item);",
+          "coverage": 1
+        },
+        "101": {
+          "source": "",
+          "coverage": ""
+        },
+        "102": {
+          "source": "        return  _self._drawSingle(item);",
+          "coverage": 1
+        },
+        "103": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "104": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "105": {
+          "source": "     * 删除所有candlestick",
+          "coverage": ""
+        },
+        "106": {
+          "source": "     *",
+          "coverage": ""
+        },
+        "107": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "108": {
+          "source": "    removeAll: function(){",
+          "coverage": ""
+        },
+        "109": {
+          "source": "        var _self = this,",
+          "coverage": 1
+        },
+        "110": {
+          "source": "            candlestickGroup = _self.get('candlestickGroup');",
+          "coverage": ""
+        },
+        "111": {
+          "source": "",
+          "coverage": ""
+        },
+        "112": {
+          "source": "        Util.each(candlestickGroup,function(item,index){",
+          "coverage": 1
+        },
+        "113": {
+          "source": "            item.remove();",
+          "coverage": 3
+        },
+        "114": {
+          "source": "        });",
+          "coverage": ""
+        },
+        "115": {
+          "source": "",
+          "coverage": ""
+        },
+        "116": {
+          "source": "        _self.set('candlestickGroup',[]);",
+          "coverage": 1
+        },
+        "117": {
+          "source": "        _self.set('items',[]);",
+          "coverage": 1
+        },
+        "118": {
+          "source": "    },",
+          "coverage": ""
+        },
+        "119": {
+          "source": "    /**",
+          "coverage": ""
+        },
+        "120": {
+          "source": "     * 修改candlestick",
+          "coverage": ""
+        },
+        "121": {
+          "source": "     * @param {Array} items 新的配置信息",
+          "coverage": ""
+        },
+        "122": {
+          "source": "     */",
+          "coverage": ""
+        },
+        "123": {
+          "source": "    change: function(items){",
+          "coverage": ""
+        },
+        "124": {
+          "source": "        var _self = this;",
+          "coverage": 1
+        },
+        "125": {
+          "source": "",
+          "coverage": ""
+        },
+        "126": {
+          "source": "        _self.removeAll();",
+          "coverage": 1
+        },
+        "127": {
+          "source": "        _self.set('items',items);",
+          "coverage": 1
+        },
+        "128": {
+          "source": "        _self._drawCandlesticks();",
+          "coverage": 1
+        },
+        "129": {
+          "source": "",
+          "coverage": ""
+        },
+        "130": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "131": {
+          "source": "});",
+          "coverage": ""
+        },
+        "132": {
+          "source": "",
+          "coverage": ""
+        },
+        "133": {
+          "source": "module.exports = Candlesticks;",
+          "coverage": 1
+        }
+      }
+    }
+  ],
+  "stats": {
+    "suites": 2,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2014-09-19T08:16:44.746Z",
+    "end": "2014-09-19T08:16:44.765Z",
+    "duration": 19
+  },
+  "tests": [
+    {
+      "title": "单个Candlestick生成",
+      "fullTitle": "achart-candlestick 单个Candlestick生成",
+      "duration": 1
+    },
+    {
+      "title": "生成",
+      "fullTitle": "achart-candlesticks 生成",
+      "duration": 0
+    },
+    {
+      "title": "加一条数据",
+      "fullTitle": "achart-candlesticks 加一条数据",
+      "duration": 1
+    },
+    {
+      "title": "change",
+      "fullTitle": "achart-candlesticks change",
+      "duration": 2
+    },
+    {
+      "title": "click",
+      "fullTitle": "achart-candlesticks click",
+      "duration": 2
+    },
+    {
+      "title": "mouseover",
+      "fullTitle": "achart-candlesticks mouseover",
+      "duration": 5
+    },
+    {
+      "title": "mouseout",
+      "fullTitle": "achart-candlesticks mouseout",
+      "duration": 1
+    }
+  ],
+  "failures": [],
+  "passes": [
+    {
+      "title": "单个Candlestick生成",
+      "fullTitle": "achart-candlestick 单个Candlestick生成",
+      "duration": 1
+    },
+    {
+      "title": "生成",
+      "fullTitle": "achart-candlesticks 生成",
+      "duration": 0
+    },
+    {
+      "title": "加一条数据",
+      "fullTitle": "achart-candlesticks 加一条数据",
+      "duration": 1
+    },
+    {
+      "title": "change",
+      "fullTitle": "achart-candlesticks change",
+      "duration": 2
+    },
+    {
+      "title": "click",
+      "fullTitle": "achart-candlesticks click",
+      "duration": 2
+    },
+    {
+      "title": "mouseover",
+      "fullTitle": "achart-candlesticks mouseover",
+      "duration": 5
+    },
+    {
+      "title": "mouseout",
+      "fullTitle": "achart-candlesticks mouseout",
+      "duration": 1
+    }
+  ]
+}

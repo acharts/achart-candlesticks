@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>achart-candlesticks - 简介</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="nico 0.5.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link type="image/x-icon" href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="../static/css/normalize.css" />
+    <link rel="stylesheet" href="../static/css/site.css" />
+    <link rel="stylesheet" href="../static/css/solarized.css" />
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-50522089-2', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+<script src="http://static.alipayobjects.com/seajs/seajs/2.2.0/sea.js"></script>
+
+<script>
+  seajs.config({
+    base: "../",
+    alias: {"achart-actived":"achart-actived/1.0.0/index.js","achart-canvas":"achart-canvas/1.0.0/index.js","achart-plot":"achart-plot/1.0.0/index.js","achart-raphael":"achart-raphael/1.0.0/index.js","achart-util":"achart-util/1.0.0/index.js","event-simulate":"event-simulate/1.0.0/index.js","expect.js":"expect.js/0.3.1/index.js","jquery":"jquery/1.9.1/jquery.js","sinon":"sinon/1.6.0/sinon.js"}
+  });
+</script>
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body class="spmjs">
+    <div class="body-wrapper">
+      <aside class="sidebar-wrapper">
+      <h1>
+          <a href="../">Achart-candlesticks</a>
+      </h1>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/achart-candlesticks" title="">1.0.0</a></p>
+        <p class="sidebar-description" data-keyword="">candlesticks for acharts</p>
+        <a class="sidebar-source" href="" target="_blank">View the Project</a>
+        <ul class="sidebar-navigation" role="navigation">
+          <li><a href="../">Doc</a></li>
+          <li><a href="../examples/">Demo</a></li>
+          <li><a href="../history.html">History</a></li>
+          <li><a class="test-link" href="../tests/runner.html" target="_blank">Test</a></li>
+        </ul>
+        
+<ol class="sidenav">
+  <li><a href="index.html">简介</a></li>
+  <li><a href="candlesticks.html">Candlesticks 使用</a></li>
+</ol>
+
+      </aside>
+      <div class="content-wrapper">
+        
+<article class="hentry">
+  <h1 class="entry-title">简介</h1>
+  <div class="entry-content">
+    <p>使用多个candlestick</p>
+<hr>
+<h2 id="目录">目录<a href="#目录" class="anchor">¶</a></h2><ul>
+<li>为什么</li>
+<li>实现了什么</li>
+<li>如何使用</li>
+</ul>
+<h3 id="为什么">为什么<a href="#为什么" class="anchor">¶</a></h3><ul>
+<li>多个candlesticks一起使用，都有统一的配置信息，如果单个使用candlestick，逻辑非常分散，如果多个场景使用多个candlesticks，那么更需要抽取出来形成控件</li>
+</ul>
+<h3 id="实现了什么">实现了什么<a href="#实现了什么" class="anchor">¶</a></h3><ul>
+<li>统一的candlestick配置信息</li>
+<li>批量改变candlestick</li>
+</ul>
+<h3 id="如何使用">如何使用<a href="#如何使用" class="anchor">¶</a></h3><ul>
+<li>直接通过 addShape(candlesticks,cfg) 来使用</li>
+</ul>
+<h3 id="更多">更多<a href="#更多" class="anchor">¶</a></h3><ul>
+<li>详细的使用和扩展参考 <a href="candlesticks.html">candlesticks使用</a></li>
+</ul>
+
+  </div>
+</article>
+
+      </div>
+      
+    </div>
+    <div class="footer-wrapper">
+      <footer>
+        <p class="footer-powered"><a href="http://spmjs.io">spmjs.io</a> •
+<a href="https://github.com/spmjs/spm">spm</a> •
+<a href="http://seajs.org">Sea.js</a> •
+<a href="http://lab.lepture.com/nico/">nico</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script src="../static/js/nprogress.js?nowrap"></script>
+  <script>
+  (function() {
+    NProgress.start();
+    window.onload = NProgress.done;
+    var ready = function(fn) {
+      var doc = document;
+      if(doc.addEventListener) {
+        doc.addEventListener('DOMContentLoaded', fn, false);
+      } else {
+        doc.attachEvent('onreadystatechange', fn);
+      }
+    };
+    ready(function() {
+      NProgress.inc(0.6);
+    }, false);
+  })();
+  </script>
+</html>

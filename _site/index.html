@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>achart-candlesticks - achart-candlesticks </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="nico 0.5.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link type="image/x-icon" href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="./static/css/normalize.css" />
+    <link rel="stylesheet" href="./static/css/site.css" />
+    <link rel="stylesheet" href="./static/css/solarized.css" />
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-50522089-2', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+<script src="http://static.alipayobjects.com/seajs/seajs/2.2.0/sea.js"></script>
+
+<script>
+  seajs.config({
+    base: "./",
+    alias: {"achart-actived":"achart-actived/1.0.0/index.js","achart-canvas":"achart-canvas/1.0.0/index.js","achart-plot":"achart-plot/1.0.0/index.js","achart-raphael":"achart-raphael/1.0.0/index.js","achart-util":"achart-util/1.0.0/index.js","event-simulate":"event-simulate/1.0.0/index.js","expect.js":"expect.js/0.3.1/index.js","jquery":"jquery/1.9.1/jquery.js","sinon":"sinon/1.6.0/sinon.js"}
+  });
+</script>
+    <!--[if lt IE 9]>
+    <script src="./static/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body class="spmjs">
+    <div class="body-wrapper">
+      <aside class="sidebar-wrapper">
+      <h1>
+          <a href="./">Achart-candlesticks</a>
+      </h1>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/achart-candlesticks" title="">1.0.0</a></p>
+        <p class="sidebar-description" data-keyword="">candlesticks for acharts</p>
+        <a class="sidebar-source" href="" target="_blank">View the Project</a>
+        <ul class="sidebar-navigation" role="navigation">
+          <li><a href="./">Doc</a></li>
+          <li><a href="examples/">Demo</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a class="test-link" href="tests/runner.html" target="_blank">Test</a></li>
+        </ul>
+        
+
+      </aside>
+      <div class="content-wrapper">
+        
+<article class="hentry">
+  <h1 class="entry-title">achart-candlesticks <a href="http://spmjs.io/package/achart-candlesticks"><img src="http://spmjs.io/badge/achart-candlesticks" alt="spm version"></a></h1>
+  <div class="entry-content">
+    <p>生成多个Candlesticks</p>
+<ul>
+<li><a href="wiki/">wiki 文档</a></li>
+</ul>
+<hr>
+<p>candlesticks for acharts</p>
+<h2 id="install">Install<a href="#install" class="anchor">¶</a></h2><pre>$ spm install achart-candlesticks --save</pre><h2 id="usage">Usage<a href="#usage" class="anchor">¶</a></h2><div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> achartCandlesticks = require(<span class="string">'achart-candlesticks'</span>);
+<span class="comment">// use achartCandlesticks</span></code></pre></div><h2 id="candlesticks">Candlesticks<a href="#candlesticks" class="anchor">¶</a></h2><p>candlestick的管理控件。</p>
+<h3 id="配置项">配置项<a href="#配置项" class="anchor">¶</a></h3><ul>
+<li><strong>candlestick</strong> 所有candlestick的默认配置项,见下面candlestick</li>
+<li><strong>items</strong> 初始的candlestick集合配置信息</li>
+</ul>
+<h3 id="方法">方法<a href="#方法" class="anchor">¶</a></h3><ul>
+<li>addCandlestick(item) 添加candlestick</li>
+<li>removeAll() 删除所有candlestick</li>
+<li>change(items) 更改所有的candlestick</li>
+</ul>
+<h3 id="事件">事件<a href="#事件" class="anchor">¶</a></h3><ul>
+<li><p>stockclick 点击candlestick</p>
+<ul>
+<li>ev：事件对象，通过ev.candlestick获取candlestick对象，通过ev.candlestick获取candlestick属性内容</li>
+</ul>
+</li>
+<li><p>stockover 鼠标移到candlestick</p>
+<ul>
+<li>ev：事件对象，通过ev.candlestick获取candlestick对象，通过ev.candlestick获取candlestick属性内容</li>
+</ul>
+</li>
+<li><p>stockout 鼠标移出candlestick</p>
+<ul>
+<li>ev：事件对象，通过ev.candlestick获取candlestick对象，通过ev.candlestick获取candlestick属性内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="更多">更多<a href="#更多" class="anchor">¶</a></h3><ul>
+<li>由于candlesticks使用了 Actived.Group的扩展所以可以使用此扩展的所有的<a href="http://spmjs.io/docs/achart-actived/latest/">属性和方法</a></li>
+</ul>
+<h2 id="candlestick">candlestick<a href="#candlestick" class="anchor">¶</a></h2><p>一种图形标记，包含文本和连接线。</p>
+<h3 id="配置项">配置项<a href="#配置项" class="anchor">¶</a></h3><ul>
+<li><strong>riseLine</strong> {object} 上升线的配置信息,详见<a href="http://spmjs.io/docs/achart-canvas/#line">line</a></li>
+<li><strong>fallLine</strong> {object} 下降线的配置信息,详见<a href="http://spmjs.io/docs/achart-canvas/#line">line</a></li>
+<li><strong>riseShape</strong> {object} 上升的图形的配置信息,详见<a href="http://spmjs.io/docs/achart-canvas/#rect">rect</a></li>
+<li><strong>fallShape</strong> {object} 下降的图形的配置信息,详见<a href="http://spmjs.io/docs/achart-canvas/#rect">rect</a></li>
+<li><strong>points</strong> {Array} 点信息数据，格式为[open,high,low,close]</li>
+<li><strong>singleWidth</strong> {Number} 蜡烛的统一宽度</li>
+</ul>
+<h3 id="方法">方法<a href="#方法" class="anchor">¶</a></h3><ul>
+<li>change(cfg) 修改candlestick配置，会触发重绘</li>
+</ul>
+<h3 id="更多">更多<a href="#更多" class="anchor">¶</a></h3><ul>
+<li>由于candlestick使用了 Actived.Group的扩展所以可以使用此扩展的所有的<a href="http://spmjs.io/docs/achart-actived/latest/">属性和方法</a></li>
+</ul>
+
+  </div>
+</article>
+
+      </div>
+      
+    </div>
+    <div class="footer-wrapper">
+      <footer>
+        <p class="footer-powered"><a href="http://spmjs.io">spmjs.io</a> •
+<a href="https://github.com/spmjs/spm">spm</a> •
+<a href="http://seajs.org">Sea.js</a> •
+<a href="http://lab.lepture.com/nico/">nico</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script src="./static/js/nprogress.js?nowrap"></script>
+  <script>
+  (function() {
+    NProgress.start();
+    window.onload = NProgress.done;
+    var ready = function(fn) {
+      var doc = document;
+      if(doc.addEventListener) {
+        doc.addEventListener('DOMContentLoaded', fn, false);
+      } else {
+        doc.attachEvent('onreadystatechange', fn);
+      }
+    };
+    ready(function() {
+      NProgress.inc(0.6);
+    }, false);
+  })();
+  </script>
+</html>
