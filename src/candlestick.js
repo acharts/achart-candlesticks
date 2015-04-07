@@ -7,7 +7,7 @@ var Util = require('achart-util'),
     Item = require('achart-plot').Item;
 
 /**
- * @class Chart.Group.Flag
+ * @class Chart.Candlesticks.Candlestick
  * 图形标记，包含文本和连接线
  */
 var Candlestick = function (cfg) {

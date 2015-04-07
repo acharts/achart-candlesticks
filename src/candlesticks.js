@@ -4,8 +4,12 @@ var Util = require('achart-util'),
     PlotItem = require('achart-plot').Item;
 
 /**
- * @class Chart.Group.Candlesticks
+ * @class Chart.Candlesticks
  * 股票k线图
+
+ *  - <a href="http://spmjs.io/docs/achart-candlesticks/" target="_blank">文档</a>
+ *  - <a href="http://spmjs.io/docs/achart-candlesticks/wiki/" target="_blank">wiki</a>
+
  * @extends Chart.PlotItem
  */
 var Candlesticks = function(cfg){
