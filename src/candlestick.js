@@ -9,6 +9,7 @@ var Util = require('achart-util'),
 /**
  * @class Chart.Candlesticks.Candlestick
  * 图形标记，包含文本和连接线
+ * @extends Chart.Plot.Item
  */
 var Candlestick = function (cfg) {
     Candlestick.superclass.constructor.call(this,cfg);

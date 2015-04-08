@@ -10,7 +10,8 @@ var Util = require('achart-util'),
  *  - <a href="http://spmjs.io/docs/achart-candlesticks/" target="_blank">文档</a>
  *  - <a href="http://spmjs.io/docs/achart-candlesticks/wiki/" target="_blank">wiki</a>
 
- * @extends Chart.PlotItem
+ * @extends Chart.Plot.Item
+ * @mixins Chart.Actived.Group
  */
 var Candlesticks = function(cfg){
     Candlesticks.superclass.constructor.call(this,cfg);
